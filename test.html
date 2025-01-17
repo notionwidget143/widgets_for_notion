@@ -1,2 +1,95 @@
-<script src="https://cdn.commoninja.com/sdk/latest/commonninja.js" defer></script>
-<div class="commonninja_component pid-10062b19-1779-43a5-a165-226354b3462a"></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Position Size Calculator</title>
+  <style>
+    /* Center the widget on the page */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #f4f4f4, #d9e4f5);
+      font-family: Arial, sans-serif;
+    }
+
+    /* Widget container styling */
+    #widget-container {
+      display: inline-block;
+      padding: 15px;
+      border-radius: 12px;
+      background-color: #ffffff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Custom header styling */
+    #custom-header {
+      font-size: 18px;
+      color: #ffffff;
+      background-color: #000000;
+      text-align: center;
+      padding: 10px;
+      border-radius: 12px 12px 0 0;
+      margin: -15px -15px 15px -15px;
+    }
+
+    /* Adjust iframe size and styles */
+    iframe {
+      border: none;
+      border-radius: 8px;
+    }
+
+    /* Footer customization */
+    #custom-footer {
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+      margin-top: 10px;
+    }
+
+    #custom-footer a {
+      color: #0000FF;
+      text-decoration: none;
+    }
+
+    #custom-footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div id="widget-container">
+    <div id="custom-header">Position Size Calculator</div>
+    <script type="text/javascript">
+      DukascopyApplet = {
+        "type": "position_size_calculator",
+        "params": {
+          "showHeader": false,
+          "showFooter": false,
+          "accentColor": "#000000",
+          "availableInstruments": "l:",
+          "instrument": "EUR/USD",
+          "accountCurrency": "USD",
+          "accountBalance": "1000",
+          "stopLossPips": "50",
+          "riskUnit": 1,
+          "riskPercentage": "2",
+          "width": "585",
+          "height": "364",
+          "adv": "popup"
+        }
+      };
+    </script>
+    <script
+      type="text/javascript"
+      src="https://freeserv-static.dukascopy.com/2.0/core.js"
+    ></script>
+    <div id="custom-footer">
+      Powered by <a href="https://www.dukascopy.com/" target="_blank">Dukascopy</a>
+    </div>
+  </div>
+</body>
+</html>
