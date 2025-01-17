@@ -12,51 +12,29 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background: linear-gradient(135deg, #89f7fe, #66a6ff);
-            color: #333;
+            background: none;
+            color: #000;
         }
         .greeting-widget {
             text-align: center;
-            padding: 30px;
-            border-radius: 15px;
-            background: rgba(255, 255, 255, 0.8);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-            max-width: 300px;
-            animation: fadeIn 1s ease-in-out;
+            padding: 0;
+            border: none;
+            background: none;
+            box-shadow: none;
         }
         .greeting-widget h1 {
-            color: #0078d4;
+            color: #000;
             font-size: 2.5em;
+            font-weight: bold;
             margin: 0;
         }
         .greeting-widget p {
             font-size: 1.2em;
-            color: #555;
+            color: #000;
             margin-top: 10px;
-        }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-        @media (max-width: 600px) {
-            .greeting-widget {
-                padding: 20px;
-            }
-            .greeting-widget h1 {
-                font-size: 2em;
-            }
-            .greeting-widget p {
-                font-size: 1em;
-            }
+            font-weight: bold;
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="greeting-widget">
