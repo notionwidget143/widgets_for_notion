@@ -51,7 +51,7 @@
             const localTime = new Date(currentTime.getTime() + offset);
             const hours = localTime.getUTCHours();
 
-            if (hours >= 0 && hours < 12) {
+            if (hours >= 6 && hours < 12) {
                 return "Good Morning";
             } else if (hours >= 12 && hours < 15) {
                 return "Good Noon";
