@@ -84,16 +84,6 @@
       background: #43a047;
     }
 
-    .button.history {
-      background: #2196f3;
-      color: #ffffff;
-      font-size: 1.5rem;
-    }
-
-    .button.history:hover {
-      background: #1976d2;
-    }
-
     .button.tall {
       grid-row: span 2;
       height: 150px;
@@ -127,7 +117,6 @@
 
       <button class="button" onclick="appendNumber('0')">0</button>
       <button class="button" onclick="appendDecimal('.')">.</button>
-      <button class="button history" onclick="showHistory()">&#x1F4D6;</button>
       <button class="button accent tall" onclick="appendOperator('+')">+</button>
 
       <button class="button equals" onclick="calculate()">=</button>
@@ -194,11 +183,6 @@
         isResultDisplayed = true;
       }
     }
-
-    function showHistory() {
-      alert(history.join('\n'));
-    }
   </script>
 </body>
 </html>
-
