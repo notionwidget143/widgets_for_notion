@@ -152,8 +152,13 @@
   <script>
     const display = document.getElementById('display');
     let history = [];
+    let isResultDisplayed = false;
 
     function appendNumber(number) {
+      if (isResultDisplayed) {
+        clearAll();
+        isResultDisplayed = false;
+      }
       display.value += number;
     }
 
@@ -186,9 +191,10 @@
         const result = eval(display.value);
         history.push(`${display.value} = ${result}`);
         display.value = result;
-        setTimeout(clearAll, 2000); // Clear the display after 2 seconds
+        isResultDisplayed = true;
       } catch {
-        setTimeout(clearAll, 2000); // Clear the display after 2 seconds on error
+        display.value = 'Error';
+        isResultDisplayed = true;
       }
     }
 
@@ -197,9 +203,10 @@
         const result = Math.sqrt(parseFloat(display.value));
         history.push(`√(${display.value}) = ${result}`);
         display.value = result;
-        setTimeout(clearAll, 2000); // Clear the display after 2 seconds
+        isResultDisplayed = true;
       } catch {
-        setTimeout(clearAll, 2000); // Clear the display after 2 seconds on error
+        display.value = 'Error';
+        isResultDisplayed = true;
       }
     }
 
