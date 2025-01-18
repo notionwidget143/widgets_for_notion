@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Metadata and title -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vertical Widget Navbar</title>
+
+    <!-- Embedded CSS styles -->
     <style>
+        /* Importing fonts from Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Nunito:wght@600&display=swap');
+
+        /* Body styling */
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', Arial, sans-serif;
             background-color: #f4f4f9;
             display: flex;
             justify-content: center;
@@ -14,6 +22,7 @@
             height: 100vh;
         }
 
+        /* Navbar container styling */
         .navbar {
             background-color: white;
             border-radius: 12px;
@@ -22,36 +31,50 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
+        /* Navbar heading styling */
         .navbar h1 {
             margin: 0 0 20px 0;
             font-size: 24px;
             text-align: center;
             color: #333;
+            font-family: 'Nunito', sans-serif;
         }
 
+        /* Styling for the unordered list */
         .navbar ul {
             list-style: none;
             margin: 0;
             padding: 0;
         }
 
+        /* Styling for list items */
         .navbar ul li {
             margin: 10px 0;
         }
 
+        /* Styling for anchor links */
         .navbar ul li a {
-            display: block;
+            display: flex;
+            align-items: center;
             text-decoration: none;
             color: #4CAF50;
             font-size: 18px;
+            font-family: 'Nunito', sans-serif;
             padding: 10px;
             background-color: #f9f9f9;
             border: 1px solid #ddd;
             border-radius: 8px;
-            text-align: center;
             transition: background-color 0.3s, transform 0.2s;
         }
 
+        /* Styling for icons inside anchor links */
+        .navbar ul li a img {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        /* Hover effect for anchor links */
         .navbar ul li a:hover {
             background-color: #e0e0e0;
             transform: scale(1.05);
@@ -59,10 +82,16 @@
     </style>
 </head>
 <body>
+    <!-- Navbar container -->
     <div class="navbar">
+        <!-- Navbar heading -->
         <h1>Widget Navbar</h1>
+
+        <!-- Unordered list of links -->
         <ul>
-            <li><a href="https://www.google.com" target="_blank">Google</a></li>
+            <!-- Link 1 with icon -->
+            <li><a href="https://www.google.com" target="_blank"><img src="https://www.google.com/favicon.ico" alt="Google Icon">Google</a></li>
+            <!-- Placeholder links -->
             <li><a href="#" target="_blank">Link 2</a></li>
             <li><a href="#" target="_blank">Link 3</a></li>
             <li><a href="#" target="_blank">Link 4</a></li>
