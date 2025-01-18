@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading Widget</title>
+    <style>
+        body {
+            font-family: 'Trebuchet MS', Arial, sans-serif; /* Rounded font style */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+        .widget {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            width: 400px; /* Increased width for a wider widget */
+        }
+        .widget h1 {
+            margin: 0;
+            font-size: 18px; /* Made same as dynamic text */
+            color: #333;
+        }
+        .subtitle {
+            font-size: 22px; /* Increased size */
+            color: #000; /* Changed to bold black */
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .dynamic-text {
+            font-weight: bold;
+            font-size: 18px;
+            transition: opacity 0.5s ease-in-out;
+            opacity: 1;
+            text-shadow: 0 0 1px #000; /* Thin black outline */
+        }
+        .dynamic-text.hidden {
+            opacity: 0;
+        }
+        .author {
+            margin-top: 10px;
+            font-size: 16px;
+            font-style: italic;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="widget">
+        <div class="subtitle">Trading is not a Career, it's a Lifestyle</div>
+        <h1>Trading is easy, just focus on <span class="dynamic-text">your Setup</span></h1>
+        <div class="author">- Shubham Kumar</div>
+    </div>
+
+    <script>
+        const dynamicText = document.querySelector('.dynamic-text');
+        const phrases = [
+            { text: "your Setup", color: "lightgreen" },
+            { text: "your Emotions", color: "#D8BFD8" }, /* Light purple */
+            { text: "your Stop-Loss", color: "#FFA07A" } /* Light red */
+        ];
+        let index = 0;
+
+        function updateText() {
+            dynamicText.classList.add('hidden');
+            setTimeout(() => {
+                index = (index + 1) % phrases.length;
+                dynamicText.textContent = phrases[index].text;
+                dynamicText.style.color = phrases[index].color;
+                dynamicText.classList.remove('hidden');
+            }, 500); // Match transition duration
+        }
+
+        setInterval(updateText, 2500); // Adjust interval to include transition time
+    </script>
+</body>
+</html>
