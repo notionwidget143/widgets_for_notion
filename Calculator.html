@@ -148,16 +148,18 @@
     function calculate() {
       try {
         display.value = eval(display.value);
+        setTimeout(clearAll, 2000); // Clear the display after 2 seconds
       } catch {
-        display.value = 'Error';
+        setTimeout(clearAll, 2000); // Clear the display after 2 seconds on error
       }
     }
 
     function calculateSquareRoot() {
       try {
         display.value = Math.sqrt(parseFloat(display.value));
+        setTimeout(clearAll, 2000); // Clear the display after 2 seconds
       } catch {
-        display.value = 'Error';
+        setTimeout(clearAll, 2000); // Clear the display after 2 seconds on error
       }
     }
   </script>
