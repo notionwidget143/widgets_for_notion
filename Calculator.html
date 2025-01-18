@@ -95,31 +95,50 @@
     .button.tall {
       grid-row: span 2;
     }
+
+    .operators {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      grid-column: span 1;
+    }
+
+    .numbers {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      grid-column: span 3;
+    }
   </style>
 </head>
 <body>
   <div class="calculator">
     <input type="text" class="display" id="display" readonly />
     <div class="buttons">
-      <button class="button" onclick="appendNumber('7')">7</button>
-      <button class="button" onclick="appendNumber('8')">8</button>
-      <button class="button" onclick="appendNumber('9')">9</button>
-      <button class="button accent" onclick="appendOperator('/')">/</button>
-      
-      <button class="button" onclick="appendNumber('4')">4</button>
-      <button class="button" onclick="appendNumber('5')">5</button>
-      <button class="button" onclick="appendNumber('6')">6</button>
-      <button class="button accent" onclick="appendOperator('*')">*</button>
-      
-      <button class="button" onclick="appendNumber('1')">1</button>
-      <button class="button" onclick="appendNumber('2')">2</button>
-      <button class="button" onclick="appendNumber('3')">3</button>
-      <button class="button accent tall" onclick="appendOperator('+')">+</button>
-      
-      <button class="button" onclick="appendNumber('0')">0</button>
-      <button class="button" onclick="appendDecimal('.')">.</button>
-      <button class="button" onclick="clearLast()">CE</button>
-      <button class="button accent" onclick="appendOperator('-')">-</button>
+      <div class="numbers">
+        <button class="button" onclick="appendNumber('7')">7</button>
+        <button class="button" onclick="appendNumber('8')">8</button>
+        <button class="button" onclick="appendNumber('9')">9</button>
+
+        <button class="button" onclick="appendNumber('4')">4</button>
+        <button class="button" onclick="appendNumber('5')">5</button>
+        <button class="button" onclick="appendNumber('6')">6</button>
+
+        <button class="button" onclick="appendNumber('1')">1</button>
+        <button class="button" onclick="appendNumber('2')">2</button>
+        <button class="button" onclick="appendNumber('3')">3</button>
+
+        <button class="button" onclick="appendNumber('0')">0</button>
+        <button class="button" onclick="appendDecimal('.')">.</button>
+        <button class="button" onclick="clearLast()">CE</button>
+      </div>
+
+      <div class="operators">
+        <button class="button accent" onclick="appendOperator('/')">/</button>
+        <button class="button accent" onclick="appendOperator('*')">*</button>
+        <button class="button accent" onclick="appendOperator('-')">-</button>
+        <button class="button accent" onclick="appendOperator('+')">+</button>
+      </div>
 
       <button class="button" onclick="appendOperator('%')">%</button>
       <button class="button" onclick="calculateSquareRoot()">√</button>
