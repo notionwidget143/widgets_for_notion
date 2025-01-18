@@ -106,7 +106,9 @@
       <button class="button" onclick="appendDecimal('.')">.</button>
       <button class="button" onclick="clearLast()">CE</button>
       <button class="button accent" onclick="appendOperator('+')">+</button>
-      
+
+      <button class="button" onclick="appendOperator('%')">%</button>
+      <button class="button" onclick="calculateSquareRoot()">√</button>
       <button class="button equals" onclick="calculate()">=</button>
       <button class="button" style="grid-column: span 4;" onclick="clearAll()">AC</button>
     </div>
@@ -146,6 +148,14 @@
     function calculate() {
       try {
         display.value = eval(display.value);
+      } catch {
+        display.value = 'Error';
+      }
+    }
+
+    function calculateSquareRoot() {
+      try {
+        display.value = Math.sqrt(parseFloat(display.value));
       } catch {
         display.value = 'Error';
       }
