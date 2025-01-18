@@ -51,12 +51,13 @@
       border: none;
       border-radius: 8px;
       font-size: 1.2rem;
-      padding: 15px;
+      padding: 20px;
       cursor: pointer;
       transition: background 0.2s ease;
       display: flex;
       justify-content: center;
       align-items: center;
+      height: 70px;
     }
 
     .button:hover {
@@ -75,7 +76,8 @@
     .button.equals {
       background: #4caf50;
       color: #ffffff;
-      grid-column: span 4;
+      grid-column: span 3;
+      height: 70px;
     }
 
     .button.equals:hover {
@@ -94,26 +96,7 @@
 
     .button.tall {
       grid-row: span 2;
-      height: 100%;
-    }
-
-    .operators {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      grid-column: span 1;
-    }
-
-    .operators .button:last-child {
-      grid-row: span 2;
-      height: 120px;
-    }
-
-    .numbers {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      grid-column: span 3;
+      height: 150px;
     }
   </style>
 </head>
@@ -127,30 +110,25 @@
       <button class="button" onclick="appendOperator('%')">%</button>
       <button class="button" onclick="calculateSquareRoot()">√</button>
 
-      <div class="numbers">
-        <button class="button" onclick="appendNumber('7')">7</button>
-        <button class="button" onclick="appendNumber('8')">8</button>
-        <button class="button" onclick="appendNumber('9')">9</button>
+      <button class="button" onclick="appendNumber('7')">7</button>
+      <button class="button" onclick="appendNumber('8')">8</button>
+      <button class="button" onclick="appendNumber('9')">9</button>
+      <button class="button accent" onclick="appendOperator('/')">/</button>
 
-        <button class="button" onclick="appendNumber('4')">4</button>
-        <button class="button" onclick="appendNumber('5')">5</button>
-        <button class="button" onclick="appendNumber('6')">6</button>
+      <button class="button" onclick="appendNumber('4')">4</button>
+      <button class="button" onclick="appendNumber('5')">5</button>
+      <button class="button" onclick="appendNumber('6')">6</button>
+      <button class="button accent" onclick="appendOperator('*')">*</button>
 
-        <button class="button" onclick="appendNumber('1')">1</button>
-        <button class="button" onclick="appendNumber('2')">2</button>
-        <button class="button" onclick="appendNumber('3')">3</button>
+      <button class="button" onclick="appendNumber('1')">1</button>
+      <button class="button" onclick="appendNumber('2')">2</button>
+      <button class="button" onclick="appendNumber('3')">3</button>
+      <button class="button accent" onclick="appendOperator('-')">-</button>
 
-        <button class="button" onclick="appendNumber('0')">0</button>
-        <button class="button" onclick="appendDecimal('.')">.</button>
-        <button class="button history" onclick="showHistory()">&#x1F4D6;</button>
-      </div>
-
-      <div class="operators">
-        <button class="button accent" onclick="appendOperator('/')">/</button>
-        <button class="button accent" onclick="appendOperator('*')">*</button>
-        <button class="button accent" onclick="appendOperator('-')">-</button>
-        <button class="button accent tall" onclick="appendOperator('+')">+</button>
-      </div>
+      <button class="button" onclick="appendNumber('0')">0</button>
+      <button class="button" onclick="appendDecimal('.')">.</button>
+      <button class="button history" onclick="showHistory()">&#x1F4D6;</button>
+      <button class="button accent tall" onclick="appendOperator('+')">+</button>
 
       <button class="button equals" onclick="calculate()">=</button>
     </div>
@@ -223,3 +201,4 @@
   </script>
 </body>
 </html>
+
