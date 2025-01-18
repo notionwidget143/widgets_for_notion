@@ -20,7 +20,7 @@
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       border-radius: 16px;
       padding: 20px;
-      width: 320px;
+      width: 340px;
       display: grid;
       grid-template-rows: auto 1fr;
       gap: 15px;
@@ -45,14 +45,15 @@
     .button {
       background: #e0e0e0;
       border: none;
-      border-radius: 8px;
+      border-radius: 12px;
       font-size: 1.2rem;
       cursor: pointer;
       transition: background 0.2s ease;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 60px;
+      height: 70px;
+      width: 70px;
     }
 
     .button:hover {
@@ -72,7 +73,7 @@
       background: #4caf50;
       color: #ffffff;
       grid-column: span 3;
-      height: 60px;
+      height: 70px;
     }
 
     .button.equals:hover {
@@ -81,7 +82,7 @@
 
     .button.tall {
       grid-row: span 2;
-      height: 130px;
+      height: 150px;
     }
   </style>
 </head>
@@ -112,8 +113,8 @@
 
       <button class="button" onclick="appendDecimal('.')">.</button>
       <button class="button" onclick="appendNumber('0')">0</button>
-      <button class="button equals" onclick="calculate()">=</button>
       <button class="button" onclick="roundNumber()">Rnd</button>
+      <button class="button equals" onclick="calculate()">=</button>
     </div>
   </div>
 
