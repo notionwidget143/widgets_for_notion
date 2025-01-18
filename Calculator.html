@@ -120,7 +120,13 @@
 <body>
   <div class="calculator">
     <input type="text" class="display" id="display" readonly />
+
     <div class="buttons">
+      <button class="button" onclick="clearAll()">AC</button>
+      <button class="button" onclick="clearLast()">CE</button>
+      <button class="button" onclick="appendOperator('%')">%</button>
+      <button class="button" onclick="calculateSquareRoot()">√</button>
+
       <div class="numbers">
         <button class="button" onclick="appendNumber('7')">7</button>
         <button class="button" onclick="appendNumber('8')">8</button>
@@ -136,7 +142,7 @@
 
         <button class="button" onclick="appendNumber('0')">0</button>
         <button class="button" onclick="appendDecimal('.')">.</button>
-        <button class="button" onclick="clearLast()">CE</button>
+        <button class="button history" onclick="showHistory()">&#x1F4D6;</button>
       </div>
 
       <div class="operators">
@@ -146,12 +152,7 @@
         <button class="button accent tall" onclick="appendOperator('+')">+</button>
       </div>
 
-      <button class="button" onclick="appendOperator('%')">%</button>
-      <button class="button" onclick="calculateSquareRoot()">√</button>
-      <button class="button history" onclick="showHistory()">&#x1F4D6;</button>
       <button class="button equals" onclick="calculate()">=</button>
-
-      <button class="button" style="grid-column: span 4;" onclick="clearAll()">AC</button>
     </div>
   </div>
 
