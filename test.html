@@ -1,55 +1,96 @@
-<!-- TradingView Widget BEGIN -->
-<div class="tradingview-widget-container">
-  <div class="tradingview-widget-container__widget"></div>
-  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text"></span></a></div>
-  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-  {
-  "symbols": [
-    [
-      "OANDA:XAUUSD|1M"
-    ]
-  ],
-  "chartOnly": false,
-  "width": "100%",
-  "height": "100%",
-  "locale": "en",
-  "colorTheme": "light",
-  "autosize": true,
-  "showVolume": false,
-  "showMA": false,
-  "hideDateRanges": false,
-  "hideMarketStatus": false,
-  "hideSymbolLogo": false,
-  "scalePosition": "right",
-  "scaleMode": "Normal",
-  "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
-  "fontSize": "12",
-  "noTimeScale": false,
-  "valuesTracking": "1",
-  "changeMode": "price-and-percent",
-  "chartType": "candlesticks",
-  "maLineColor": "#2962FF",
-  "maLineWidth": 1,
-  "maLength": 9,
-  "headerFontSize": "large",
-  "widgetFontColor": "rgba(0, 0, 0, 1)",
-  "lineType": 0,
-  "dateRanges": [
-    "1d|1",
-    "1m|30",
-    "3m|60",
-    "12m|1D",
-    "60m|1W",
-    "all|1M"
-  ],
-  "timeHoursFormat": "12-hours",
-  "upColor": "#22ab94",
-  "downColor": "#f7525f",
-  "borderUpColor": "#22ab94",
-  "borderDownColor": "#f7525f",
-  "wickUpColor": "#22ab94",
-  "wickDownColor": "#f7525f"
-}
-  </script>
-</div>
-<!-- TradingView Widget END -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Metadata and title -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vertical Widget Navbar</title>
+
+    <!-- Embedded CSS styles -->
+    <style>
+        /* Importing fonts from Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Nunito:wght@600&display=swap');
+
+        /* Body styling */
+        body {
+            margin: 0;
+            font-family: 'Roboto', Arial, sans-serif;
+            background-color: white; /* Set background to plain white */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Navbar container styling */
+        .navbar {
+            background-color: white;
+            border-radius: 12px;
+            padding: 20px;
+            width: 250px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Styling for the unordered list */
+        .navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Styling for list items */
+        .navbar ul li {
+            margin: 10px 0;
+        }
+
+        /* Styling for anchor links */
+        .navbar ul li a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #4CAF50;
+            font-size: 18px;
+            font-family: 'Nunito', sans-serif;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        /* Styling for icons inside anchor links */
+        .navbar ul li a img {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        /* Hover effect for anchor links */
+        .navbar ul li a:hover {
+            background-color: #e0e0e0;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar container -->
+    <div class="navbar">
+        <!-- Unordered list of links -->
+        <ul>
+            <!-- Link 1 with icon -->
+            <li><a href="https://in.tradingview.com/chart/Bt5sIOOA/?symbol=OANDA%3AXAUUSD" target="_blank"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAPFBMVEVHcEz///8ABBYAAAETFyITFyITFyITFiETFyITFyJyc3cMER66u7xdX2OMjZDa2ttPUVbs7O3ExMYxMzu3PIggAAAACnRSTlMA////YfH/Jq/yoIfyUgAAAMpJREFUKJGFk1sChCAIRRUaMulhuv+9jqI500O7HwWewBBUSo1mopsmM6qo4U6yhhjXYkSjMm1o1MN+dV/VZkSvEA5xsuMCiycQFlvkAK1F5iCeQNx0kU/mjjgnZ8cznF16WhRnhQsMAldx8JJ2Rq/1hnu28w/ZNSovoHMouXXgWgpC+ZohRaf43yEwHamypS08QVxLHf/HV2Gu4x/WSLACmW+RHinX4fHclSXKMXF6L4HPsHSFjva897M7Jt0B645md6gb1+GTrsMXkTARdziYRUoAAAAASUVORK5CYII=" alt="Tradingview">Tradingiew</a></li>
+            <li><a href="https://www.forexfactory.com/" target="_blank"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAWlBMVEU2VYstT4gdRoMoTIYgR4MPP398jK3w8vYyUokWQYCUoLvk5+2stcnS1+Lq7PH////29/kANnujrsSLmLWbpr4bRIK9xNRNZpWhrMI+W4+0vM4AL3hfdJ3X2+W8J2nSAAAAgklEQVR4AdXKRQKDMBQA0SgOgzv3P2bd278vA9EXtdO0Oc/WXWb7Tj4II2XjJDWnB1nu3qgAEyclYWVreEF9JmhKoGjhDbuz9ZZnr5jCYGIYBZyczmwsoMowkRcQ8FMvYjiDgGWyIGJkvYxTPMi45ghY8NH2RJ3UHzVaPdV+pNVfdgQtSg/u044e1AAAAABJRU5ErkJggg==">Forex Factory</a></li>
+            <li><a href="https://discord.com/channels/893776412983562260/1290972526343884812" target="_blank"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAASFBMVEVHcExYZPFXZPJXZPFXZPFXZPFXZPFXZPFYZPJYZfJYZPJXZfFWY/JhbfNsd/OSmvbS1fv////x8/6pr/hQXvLl5/2Bi/XAxfpYg8U1AAAADHRSTlMADzmFwOT8YtP/sloPkm6kAAABAklEQVR4AYWTBbLFIAxFcXs4lf3vFEg1X2+9JzITIZco40IqJQVnlGBRbewtoxFmziI59rCPRGhIfn5hiLKDYSkJkemZz98689IB9YlCjPMlxnBgr4ejgTebcqltqJacLFBDCQPHJZWX0gIOjHB4Lusbrgu4ciKQI3IVRALMGGaAkqgZNdQRK4U8foc0MtQw46oDbmC9pBkQomwHlBPOlOsW9lL2sK1XUknETNnKpNOl5slKm1AQfsFaxw2eF+RQBB9HwLq3PedxG3CPMyc7yufDqF6b5Q2+jfoFf5SPaH/WPXhQuCqvn5bNVqEXR1GzkST7e0wwxeyX0fSO/T/Uf65DBzQNHUMopTvLAAAAAElFTkSuQmCC" alt="Discord">Discord Group</a></li>
+            <!-- Placeholder links -->
+            <li><a href="https://www.exness.com/calculator/" target="_blank"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAXVBMVEVHcEz/3QH/4wL/5wH/4gL/3wL/4wH/4gL/5QL/3gL/3AH/4gL/4AL/5ALexgHSuQHv2gLp0AJUSQABAAAyKgCllAHEsQEkHgC2pQH/6gKTgQH/5QJ2agG+qwHz3gJ9+1g1AAAAHHRSTlMAPYjC5vxr2///Jv5R2v////////////////+Josg8jAAAAPZJREFUeAF9k1UCg0AMRHESgg9u9z9m1+rtzu+LS/BQGMVJmiZxFAafynJiJ8qzN1TEwi+SuHiyMuV3SVo+mPCXxNHim2lqI8f8U7FmmXUU+XTVNVesVTdNq7B0DnXEleqdmKnuAQyjyDQvpNC6zTVTGOyKNUC/HcCxnsBJigE1827KmTGutHYDFk2ndcRcky4pYTmVy3VdNKFfacGs/BodPAlSpg3zYAQQKwrUwkrpHc5aw3yHZKALS+3VXlfbajYfj7CPgqjr++ajIF8r3iHY8Yno8WmzTl7G9xg8fQ/etzLPslN3RiV9M/IckWjmPU3/UXvf4QbSVR64dRBc8AAAAABJRU5ErkJggg==" alt="Margin">Margin Calculator</a></li>
+            <li><a href="https://in.investing.com/news/most-popular-news" target="_blank"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQ0NGg8PGjclHyU3Ny0rNzc3Nzc3Nzc3NzctNys3Nzc3Nzc3Nzc3Mjc4Nzc3Nzc3Nzc3Ky4uNzcrNystN//AABEIABwAHAMBIgACEQEDEQH/xAAaAAACAgMAAAAAAAAAAAAAAAAGBwADAQQF/8QAKBAAAQMDBAAFBQAAAAAAAAAAAQIDBAAFEQYSITEHEyJBYRRRcYGh/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAMC/8QAHBEAAQQDAQAAAAAAAAAAAAAAAAECEkERMeED/9oADAMBAAIRAxEAPwAPCqm6jeRp+G9oLTC4kdpufc7i2w5KKcqwvzP4MDj4q1XhpHLs2DH1Ky/dIrXmqjCLtwCMgK9Zxnjn56oASt1qmXFtxyM2Chs4UpSgBn7VzkOIcTuB4o1e0Up9WnGbRd5arZfAXHVYxsw2F+3eU5GD0R70HajgxbRfp1ut8hyRHjO+WHXMZKgBu644VuH6qbE9JOkqYrpt0MJHdhHH1zbmtP6Wtyo00vWme3JkKCEbVpSHMhHqyT6x2AO+a2rf4h2uNri835cS4fSz46Gm2whvzElKUDKhvxj0nomlrmpmqGBkaK8RYdg0m1bJ0KRImwiswnEBJQNwONxKgRypQ4B4x+KXxdWtSlurK3FkqWtXaieyaozWCTQH/9k=" alt="investing.com">Investing.com</a></li>
+            <li><a href="https://finviz.com/forex.ashx" target="_blank"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAADY0lEQVR4Ab2Xg5IcURiFJ3iJ5AWCcoWF6DFi23Yxtm13bNv2Mlzbw9afc3bvYtg92Uxu1VeDvv2fc/9rj1MZrnlJe9B5+GnvRKCBNFAFdKK+p6lnE1lXveMY30G4rh0C9gDbwHclJg7orKve6cEYjJWUMF7kZwd8rgDFQP6SYsZQsTyORoahwsizPo9q9X1gAWkllorVg7GpEbvlp+o8w8/Up70/KmcA+cdkMDY1qBVWhh5uSDvorgaTpIg0pUHNqJHeQaVKkmUY0RTO9e9TCzSLDzvlbasGnJ2M6FAIjjzjlSmXfDL7mk/mXvfL1Ms+GXWWz+K+a1OLmtRm2jkweuGzyK04g0+F6N7XQXn6y5AnIL/GkgqfLfx8nWfIlmdBGX02bowipVk/+DjXdyST8jWPApJdZgoLP+eh5e8LTGlZgoYtJz6GZET8ODuozS7oih8/3KZ92/OgVAdsUUXOfgnJoFNetlhC4R6kANmYccUnw2J3xw9qswsmAd1N2pfe9kupt1ncwtetMDQEBiZc8ElaSbiDolpLZsY3oFObBjQgTnCwPfhhhAmwxaseBmiOyJ5XQTEtYREDn+e/ogvOJIyredwsOmwB+7kcg6xlCaCfl9+HATX9Jl30yb3vunwqMuXg26CMO+84LdNooNrJwBAIMNVsXeRAW/EggOfKKBh1xsvR73ZNqKIB08kA+1j7FJLIosPQxicBisqYcw2oqecW09EA0zvrqk/SOcAiig1+V1nypdiUr4B1LqbpNJSUgepE027BDb8a3e7KtUxdpd4VVQkH4Vik9MznkHzGoCrz2jEFc5GBj4UmBx4/1axwvzklnIYjVN9ybb+drcfsgn1vgjJSDTyiVj63aK4WIrboZlZsA5z7QxxbnHAhcl6Kh6XGwA9qO29GKTPAzcjbjhkgvUHxfzNALQ2a0OYZEAeS2vADSWoN2NSiJrTDjmQd1ZEs1QbuUwu0OI4fbTqU9gDpKTSQrjSoGXksr8Wx3M9MDECFzBQYyGRsalAr7sVkRMPFpCd4AKxWG2AMxmJMdTFJ5mq2EhS3wkAxYzhczeJmg3CN6IWVcMf97/p36OkxDZyKWuF+gB18lzFA627JfXfVtv9eYXaG3iSggTRQBYxXuYaBDahq/Hlv2rCGfWVSMtfzP4kN9lSCoReEAAAAAElFTkSuQmCC" alt="Forec Heatmap">Forex Heatmap</a></li>
+            <li><a href="https://www.forextime.com/trading-tools/trading-calculator/pip-calculator" target="_blank"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACzklEQVR4AWIgBP5HKQNqrwcYPYIwjONvbdu2bZuxyqi2bdu2G9RtVNu226B2e9676T+X6WU7yc3ufmk3+b3xPM96F8C21+UF1XEN3xCrfcUt7MV4VEAyiH3zDk6GZugI2f4yvkBrREIlwsFzrEUDJEPAYKAwFuEzlkJ2vIgv0MpWwPAOC1AAAt/hjXABSlsJ2fk8fpEmCIPyKQ6nURMCz/B2eArlsh8pD10pKyxQFM+gAhoOgeeeP4EyPEWRX/2Kiz6n66AC+ISGXntf2H3YDQ66ue6E8rgO5YODyUj+ZEkpYY00yAgxr/bFUBbHkCuuc0KJurjtI3wRMu3g+tFZPTEFyZBQoAneQ1nEYhZSOt0SStTDbUv4EmTGn5yaeISPqA8R3WQdlA+/MBIpne5/lbjjI7wyLkFpS5BUGJXwAsqnXxhllKiPu67wpR7hIJNsYUxCLFQoJWJ0CTTALSxHFld4FTNcczBAGHuhQvALo5HKdSTKIrsRftmyxgZh3IYKURjGIDXMZ0pVazhwWxjfoEKFL2hmFEiBLVAevon1/HuLwQJkMo8AGuKu163tXcA7PCNEy4cMEK0+7ngV+Bpi+EJkgmjVcBazkQ6i1bOU+CqMWyGELzLCq+IKFCIx02eJW0FvQ8cMRzVXOAKVWCeM8QGug3XIbIRfhQI8SzTBCyg46C+MCngO5eEKilrCbSXSQrQhiMNzVBBGUqyFsohDX4hWEhehfIjECCSBIAcuYgmSuu/Zd5ZFXqMMBEmwBCqAt6gL0Yahgft7ICkWWhY4gtQQFMRDqIBGQ7QsSGF+FRXAaSgTVhvfjb+gAtqEJLB+lNZNZO+WQLRWiIQKaDeSwfOzvDke/ocC68wjYCtRB6f+YYFjqAqB77+jgpiNz1gaYoF3mI781nBLkeRohOYQrbVHAQfPsRC1refdZxFTdVzDN8RqX3EL69AfFfwG/waoyc+SBRtOFwAAAABJRU5ErkJggg==" alt="Converter">Converter</a></li>
+            <li><a href="https://marketmilk.babypips.com/" target="_blank"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAVFBMVEUpvB4WuQAzvinM7Mqu4auh3J7///9PxUgiuxWk3qFax1RUxk4AtwCL1ofW79Tq+OlwzWvS7tG55bcAtQCG1IJHwz9ny2Ko36X5/fnw+u+Z2pbC6MBTg9M0AAAAc0lEQVR4AWIYqgBQHR0kIQjEQBStyPhtnTCCqAN4/3vqARL3pCqrt+nqNsvtNJRU7QwXZXiF2z+s7qYMx3YfqiUIwKQE2wxYjI9lKfBUklYvKBbiW6rQY2zuM0wKkXWFzYNAO2yQdKg+Wv/sUjaZ/f6w9wWBfgSfM01VhAAAAABJRU5ErkJggg==" alt="Baby Pips">Baby Pips</a></li>
+            <li><a href="https://currencystrengthmeter.org/" target="_blank"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAApklEQVR4Ae2WgQXAMBBFu8QNcZN86DC3QjbJEtmgQ3SOLtAGhyI5V9oeETyQx9e8li6Q9Vfm4HeDczClJJWzgwwxiMreAeM3VCcbDr4YLG8OorJ1gDpiOBTb0LiKQ89hONnRkL2Dp6NhftxQ73lvUPScje9Q1BHD4YCGAU/4VsPiaRj7lkY0zC1ufchwoA4Mh+Ib9vA1fD5IFW5AN4db6LnLGf+v7QL0/JXj37JpygAAAABJRU5ErkJggg==" alt="Currency Strenth">Currency Strength</a></li>
+            <li><a href="https://www.fxblue.com/market-data/tools/session-map" target="_blank"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAkFBMVEUAAIC3t9u+vt+itNsEkNwAitoAEYt1dbr29vv///9MzPcAwv8Ac8spKZTu7veMjMZBQaApRKYAufkBJpmdns/a2uwUFIphYbAAZsLKz+b6+v1TVKoAq+8AvvxWkNGvr9cHB4MAVrgGnuff3+8AgdRMTaZmZrMANKKUqNgATrOFhcI3N5sAqvAAPKfCwuEARa0KnyBHAAAAiUlEQVR4AYXORQLCQBAEwI67u3vw5f+/YwXIMXUcbZyTZE5RNR0wZAmmJdiOC8+3AloIQiaK4yS1spwWCnClo1Z1A1owPArQ264fwAo15Y/A5Mw5L/jLsmQAVkfdeGEfKeDStdclx//oODvlYgVH4ebM490yH7+C/uxeyBeL0OgbqLfqAtgJwakP/PcKa279JLAAAAAASUVORK5CYII=" alt="Session">Forex Session</a></li>
+<!--             <li><a href="Website link" target="_blank"><img src="Logo Link" alt="Name">Link X</a></li> -->
+        </ul>
+    </div>
+</body>
+</html>
