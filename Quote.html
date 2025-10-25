@@ -3,81 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trading Widget</title>
+    <title>Quote Widget</title>
+
+    <!-- Google Font: Poppins (Rounded, modern style) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+
     <style>
         body {
-            font-family: 'Trebuchet MS', Arial, sans-serif; /* Rounded font style */
+            font-family: 'Poppins', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #fff; /* Changed to plain white */
+            background-color: #fff;
         }
         .widget {
             text-align: center;
-            padding: 20px;
+            padding: 28px 32px;
             background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
-            width: 400px; /* Increased width for a wider widget */
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+            border-radius: 16px;
+            width: 420px;
+            max-width: 90%;
         }
-        .widget h1 {
-            margin: 0;
-            font-size: 18px; /* Made same as dynamic text */
-            color: #333;
-        }
-        .subtitle {
-            font-size: 22px; /* Increased size */
-            color: #000; /* Changed to bold black */
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        .dynamic-text {
-            font-weight: bold;
-            font-size: 18px;
-            transition: opacity 0.5s ease-in-out;
+        .quote {
+            font-size: 16px;
+            font-weight: 600;
+            color: #202020;
+            transition: opacity 0.8s ease-in-out;
             opacity: 1;
-            text-shadow: 0 0 1px #000; /* Thin black outline */
+            line-height: 1.45em;
+            letter-spacing: 0.2px;
         }
-        .dynamic-text.hidden {
+        .quote.hidden {
             opacity: 0;
         }
-        .author {
-            margin-top: 10px;
-            font-size: 16px;
-            font-style: italic;
-            color: #555;
+        .quote.adjust {
+            font-size: 17px;
         }
     </style>
 </head>
 <body>
     <div class="widget">
-        <div class="subtitle">The goal of a successful trader is to make the best trades. Money is secondary</div>
-        <h1>Trade what you see, and not what you <span class="dynamic-text">Think</span></h1>
-        <div class="author">- Traders</div>
+        <div class="quote" id="quoteText">Loading quote...</div>
     </div>
 
-    <!-- <script>
-        const dynamicText = document.querySelector('.dynamic-text');
-        const phrases = [
-            { text: "Think", color: "#2af560" },
-            { text: "Expect", color: "#14b9fa" }, /* Light purple */
-            { text: "your Stop-Loss", color: "#f22424" } /* Light red */
+    <script>
+        const quotes = [
+            "Trade what you see, and not what you Expect.",
+            "The goal of a successful trader is to make the best trades. Money is secondary.",
+            "Jack of all trades, master of none, though often better than a master of one.",
+            "Remember, your goal is to trade well, not to trade often.",
+            "The market does not know you exist. You can do nothing to influence it. You can only control your behavior.",
+            "The markets are unforgiving, and emotional trading always results in losses.",
+            "When a beginner wins, he feels brilliant and invincible. Then, he takes wild risk and loses everything.",
+            "Traders lose because the game is hard, or out of ignorance, or lack of discipline or because of both.",
+            "Losers bring money into the market which is necessary for the prosperity of the trading industry.",
+            "It is hard enough to know what the market is going to do; if you don’t know what you are going to do, the game is lost."
         ];
+
+        const quoteText = document.getElementById("quoteText");
         let index = 0;
 
-        function updateText() {
-            dynamicText.classList.add('hidden');
-            setTimeout(() => {
-                index = (index + 1) % phrases.length;
-                dynamicText.textContent = phrases[index].text;
-                dynamicText.style.color = phrases[index].color;
-                dynamicText.classList.remove('hidden');
-            }, 500); // Match transition duration
+        function fitText() {
+            // Auto-shrink long quotes a bit
+            if (quoteText.textContent.length > 110) {
+                quoteText.classList.add("adjust");
+            } else {
+                quoteText.classList.remove("adjust");
+            }
         }
 
-        setInterval(updateText, 2500); // Adjust interval to include transition time
-    </script> -->
+        function updateQuote() {
+            quoteText.classList.add("hidden");
+            setTimeout(() => {
+                index = (index + 1) % quotes.length;
+                quoteText.textContent = quotes[index];
+                fitText();
+                quoteText.classList.remove("hidden");
+            }, 800);
+        }
+
+        // Initialize
+        quoteText.textContent = quotes[0];
+        fitText();
+
+        // Automatically change quote every 4.5 seconds
+        setInterval(updateQuote, 4500);
+    </script>
 </body>
 </html>
