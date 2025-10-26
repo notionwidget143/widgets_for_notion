@@ -1,11 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Greeting Widget</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    :root{
+      --widget-padding-vertical: 28px;   /* increased height */
+      --widget-padding-horizontal: 22px; /* slightly reduced width */
+      --widget-radius: 144px;
+      --h1-size: 1.7rem;
+      --subtext-size: 0.95rem;
+      --emoji-size: 1.7rem;
+      --gap: 8px;
+      --boxshadow: 0 6px 18px rgba(0,0,0,0.18);
+      --max-width: 300px;               /* shrink overall width */
+    }
+
+    html,body{
+      height:100%;
+      margin:0;
+    }
 
     body {
       font-family: 'Poppins', sans-serif;
@@ -14,53 +31,76 @@
       align-items: center;
       height: 100vh;
       margin: 0;
-      background: #1a1a1a; /* Dark grayish background */
+      background: #1a1a1a;
       color: #000;
     }
 
     .greeting-widget {
       text-align: center;
-      border-radius: 20px;
-      padding: 35px 60px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
-      transition: background-color 0.8s ease, transform 0.5s ease;
-      animation: fadeIn 1s ease-in-out;
+      border-radius: var(--widget-radius);
+      padding: var(--widget-padding-vertical) var(--widget-padding-horizontal);
+      box-shadow: var(--boxshadow);
+      transition: background-color 0.6s ease, transform 0.35s ease;
+      animation: fadeIn 0.8s ease-in-out;
+      max-width: var(--max-width);
+      width: fit-content;
     }
 
     .greeting-widget h1 {
-      font-size: 2.8em;
+      font-size: var(--h1-size);
       font-weight: 600;
       margin: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
+      gap: var(--gap);
       color: #000;
       overflow: hidden;
       flex-wrap: wrap;
+      line-height: 1.5;
+    }
+
+    #emoji {
+      font-size: var(--emoji-size);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .wave span {
       display: inline-block;
-      white-space: pre; /* preserve spaces visually */
-      animation: wave 2s infinite ease-in-out;
+      white-space: pre;
+      animation: wave 1.6s infinite ease-in-out;
     }
 
     @keyframes wave {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
+      50% { transform: translateY(-6px); }
     }
 
     .greeting-widget p {
-      font-size: 1.2em;
-      margin-top: 12px;
+      font-size: var(--subtext-size);
+      margin-top: 10px;
       font-weight: 500;
       color: #222;
+      margin-bottom: 0;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(12px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width:420px){
+      :root{
+        --widget-padding-vertical: 22px;
+        --widget-padding-horizontal: 18px;
+        --h1-size: 1.45rem;
+        --subtext-size: 0.9rem;
+        --emoji-size: 1.45rem;
+        --max-width: 92vw;
+      }
+      .greeting-widget { max-width: var(--max-width); }
     }
   </style>
 </head>
@@ -75,16 +115,15 @@
 
   <script>
     function animateWaveText(text) {
-      // Preserve spaces visually
       return text.split('').map((ch, i) => {
-        const safeChar = ch === ' ' ? '&nbsp;' : ch;
-        return `<span style="animation-delay:${i * 0.12}s">${safeChar}</span>`;
+        const safeChar = ch === ' ' ? '\u00A0' : ch;
+        return `<span style="animation-delay:${i * 0.10}s">${safeChar}</span>`;
       }).join('');
     }
 
     function getGreeting() {
       const currentTime = new Date();
-      const offset = 5.5 * 60 * 60 * 1000; // GMT+5:30 offset
+      const offset = 5.5 * 60 * 60 * 1000;
       const localTime = new Date(currentTime.getTime() + offset);
       const hours = localTime.getUTCHours();
 
@@ -97,27 +136,35 @@
       let emoji = "";
 
       if (hours >= 6 && hours < 12) {
-        widget.style.backgroundColor = "#FFF5B7"; // Light yellow
+        widget.style.backgroundColor = "#FFF5B7";
         text = "Good Morning";
         emoji = "🌅";
         subtext.textContent = "Wishing you a bright and cheerful start 🌞";
+        widget.querySelector("h1").style.color = "#000";
+        subtext.style.color = "#222";
       } else if (hours >= 12 && hours < 15) {
-        widget.style.backgroundColor = "#B3E5FC"; // Light blue
+        widget.style.backgroundColor = "#B3E5FC";
         text = "Good Noon";
         emoji = "☀️";
         subtext.textContent = "Keep up the energy — it’s midday power time ⚡";
+        widget.querySelector("h1").style.color = "#000";
+        subtext.style.color = "#222";
       } else if (hours >= 15 && hours < 18) {
-        widget.style.backgroundColor = "#FFD6A5"; // Light orange
+        widget.style.backgroundColor = "#FFD6A5";
         text = "Good Afternoon";
         emoji = "🌤️";
         subtext.textContent = "Hope your afternoon is going great 🌻";
+        widget.querySelector("h1").style.color = "#000";
+        subtext.style.color = "#222";
       } else if (hours >= 18 && hours < 21) {
-        widget.style.backgroundColor = "#E68A57"; // Dark orange + grayish tint
+        widget.style.backgroundColor = "#E68A57";
         text = "Good Evening";
         emoji = "🌇";
         subtext.textContent = "Unwind and enjoy your evening vibes 🍃";
+        widget.querySelector("h1").style.color = "#000";
+        subtext.style.color = "#222";
       } else {
-        widget.style.backgroundColor = "#2B1B1B"; // Peach black
+        widget.style.backgroundColor = "#2B1B1B";
         text = "Good Night";
         emoji = "🌙";
         subtext.textContent = "Have a peaceful and cozy night 🌌";
@@ -125,7 +172,6 @@
         subtext.style.color = "#ddd";
       }
 
-      // Assign emoji and wave text separately
       emojiElement.textContent = emoji;
       greetingElement.innerHTML = animateWaveText(text);
     }
