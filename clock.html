@@ -1,1 +1,194 @@
-<iframe scrolling="no" frameborder="no" clocktype="html5" style="overflow:hidden;border:0;margin:0;padding:0;width:227px;height:75px;"src="https://www.clocklink.com/html5embed.php?clock=008&timezone=GMT0530&color=black&size=227&Title=&Message=&Target=&From=2025,1,1,0,0,0&Color=black"></iframe>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>UTC+5:30 Clock Widget with Date</title>
+  <style>
+    :root{
+      --bg: #0f1724;
+      --panel: #111827;
+      --text: #e6eef8;
+      --muted: #9aa7b8;
+      --accent: #06b6d4;
+      --shadow: rgba(2,6,23,0.6);
+      --radius: 12px;
+      --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    html,body{
+      height:100%;
+      margin:0;
+      background:linear-gradient(180deg,var(--bg),#1a1a1a 120%);
+      font-family:var(--font-sans);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    .clock {
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      color:var(--text);
+      border-radius:var(--radius);
+      padding:18px 22px;
+      box-shadow: 0 6px 20px var(--shadow), inset 0 1px 0 rgba(255,255,255,0.02);
+      display:flex;
+      gap:18px;
+      align-items:center;
+      min-width:320px;
+    }
+
+    .time {
+      display:flex;
+      gap:12px;
+      align-items:baseline;
+    }
+
+    .segment {
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.0));
+      padding:10px 14px;
+      border-radius:10px;
+      text-align:center;
+      min-width:68px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.35);
+    }
+
+    .digits {
+      font-variant-numeric: tabular-nums;
+      font-size:34px;
+      font-weight:600;
+      letter-spacing:0.6px;
+      color:var(--text);
+      line-height:1;
+    }
+
+    /* Hidden labels and helper texts */
+    .label, .tz, .small {
+      display: none !important;
+    }
+
+    .offset {
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      align-items:flex-end;
+      min-width:92px;
+    }
+
+    .date {
+      font-variant-numeric: tabular-nums;
+      font-size:14px;
+      color:var(--muted);
+      background:rgba(255,255,255,0.02);
+      padding:8px 12px;
+      border-radius:8px;
+      border:1px solid rgba(255,255,255,0.02);
+      min-width:86px;
+      text-align:right;
+    }
+
+    .dot {
+      width:9px;
+      height:9px;
+      border-radius:50%;
+      background:var(--accent);
+      box-shadow:0 0 8px rgba(6,182,212,0.4);
+      display:inline-block;
+      margin-left:8px;
+      vertical-align:middle;
+    }
+
+    @media (max-width:360px){
+      .clock{ padding:12px; gap:10px; min-width:280px; }
+      .digits { font-size:28px; }
+      .segment { min-width:56px; padding:8px 10px; border-radius:8px; }
+      .date { font-size:13px; padding:6px 8px; min-width:72px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="clock" role="group" aria-label="Clock showing hours minutes and seconds for UTC plus five thirty">
+    <div class="time" id="timeSegments" aria-hidden="false">
+      <div class="segment">
+        <div class="digits" id="hours">--</div>
+        <div class="label">Hours</div>
+      </div>
+      <div class="segment">
+        <div class="digits" id="minutes">--</div>
+        <div class="label">Minutes</div>
+      </div>
+      <div class="segment">
+        <div class="digits" id="seconds">--</div>
+        <div class="label">Seconds</div>
+      </div>
+    </div>
+
+    <div class="offset" aria-hidden="true">
+      <div class="tz"><strong>UTC+5:30</strong><span class="dot" title="Active timezone"></span></div>
+      <div class="small" id="localInfo">Local time: --</div>
+      <div class="date" id="dateDisplay">--</div>
+    </div>
+  </div>
+
+  <script>
+    // Configuration: timezone offset in minutes relative to UTC
+    const TZ_OFFSET_MINUTES = 5 * 60 + 30;
+
+    const elHours = document.getElementById('hours');
+    const elMinutes = document.getElementById('minutes');
+    const elSeconds = document.getElementById('seconds');
+    const elDate = document.getElementById('dateDisplay');
+
+    function pad(n) { return n < 10 ? '0' + n : String(n); }
+
+    // returns Date object in target timezone by shifting UTC millis
+    function dateForOffset(offsetMinutes) {
+      const now = new Date();
+      const utcMillis = now.getTime() + (now.getTimezoneOffset() * 60000);
+      const targetMillis = utcMillis + offsetMinutes * 60000;
+      return new Date(targetMillis);
+    }
+
+    // Format date like: Sat 26 Oct 2025
+    function formatDateForOffset(offsetMinutes) {
+      const d = dateForOffset(offsetMinutes);
+      const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+      const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      const dayName = days[d.getUTCDay()];
+      const dayNum = d.getUTCDate();
+      const monthName = months[d.getUTCMonth()];
+      const year = d.getUTCFullYear();
+      return `${dayName} ${pad(dayNum)} ${monthName} ${year}`;
+    }
+
+    function timeForOffset(offsetMinutes) {
+      const t = dateForOffset(offsetMinutes);
+      return {
+        hours: t.getUTCHours(),
+        minutes: t.getUTCMinutes(),
+        seconds: t.getUTCSeconds()
+      };
+    }
+
+    function tick() {
+      const tz = timeForOffset(TZ_OFFSET_MINUTES);
+      elHours.textContent = pad(tz.hours);
+      elMinutes.textContent = pad(tz.minutes);
+      elSeconds.textContent = pad(tz.seconds);
+      elDate.textContent = formatDateForOffset(TZ_OFFSET_MINUTES);
+    }
+
+    (function startTicker(){
+      tick();
+      const now = new Date();
+      const msToNextSecond = 1000 - now.getMilliseconds();
+      setTimeout(function(){
+        tick();
+        setInterval(tick, 1000);
+      }, msToNextSecond);
+    })();
+  </script>
+</body>
+</html>
