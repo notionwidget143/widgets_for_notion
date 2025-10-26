@@ -1,70 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Greeting Widget</title>
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background: none;
-            color: #000;
-        }
-        .greeting-widget {
-            text-align: center;
-            padding: 0;
-            border: none;
-            background: none;
-            box-shadow: none;
-        }
-        .greeting-widget h1 {
-            color: #000;
-            font-size: 2.5em;
-            font-weight: bold;
-            margin: 0;
-        }
-        .greeting-widget p {
-            font-size: 1.2em;
-            color: #000;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Greeting Widget</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: #1e1e1e; /* Dark grayish background */
+      color: #000;
+    }
+
+    .greeting-widget {
+      text-align: center;
+      border-radius: 20px;
+      padding: 35px 60px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+      transition: background-color 0.8s ease, transform 0.5s ease;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .greeting-widget h1 {
+      font-size: 2.8em;
+      font-weight: 600;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: #000;
+      overflow: hidden;
+      flex-wrap: wrap;
+    }
+
+    .wave span {
+      display: inline-block;
+      white-space: pre; /* preserve spaces visually */
+      animation: wave 2s infinite ease-in-out;
+    }
+
+    @keyframes wave {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .greeting-widget p {
+      font-size: 1.2em;
+      margin-top: 12px;
+      font-weight: 500;
+      color: #222;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
-    <div class="greeting-widget">
-        <h1 id="greeting"></h1>
-        <p>Hope you have a wonderful day!</p>
-    </div>
+  <div class="greeting-widget" id="widget">
+    <h1>
+      <span id="emoji"></span>
+      <span id="greeting" class="wave"></span>
+    </h1>
+    <p id="subtext">Hope you have a wonderful day!</p>
+  </div>
 
-    <script>
-        function getGreeting() {
-            const currentTime = new Date();
+  <script>
+    function animateWaveText(text) {
+      // Preserve spaces visually
+      return text.split('').map((ch, i) => {
+        const safeChar = ch === ' ' ? '&nbsp;' : ch;
+        return `<span style="animation-delay:${i * 0.12}s">${safeChar}</span>`;
+      }).join('');
+    }
 
-            // Convert time to GMT+5:30
-            const offset = 5.5 * 60 * 60 * 1000; // Offset in milliseconds
-            const localTime = new Date(currentTime.getTime() + offset);
-            const hours = localTime.getUTCHours();
+    function getGreeting() {
+      const currentTime = new Date();
+      const offset = 5.5 * 60 * 60 * 1000; // GMT+5:30 offset
+      const localTime = new Date(currentTime.getTime() + offset);
+      const hours = localTime.getUTCHours();
 
-            if (hours >= 6 && hours < 12) {
-                return "Good Morning";
-            } else if (hours >= 12 && hours < 15) {
-                return "Good Noon";
-            } else if (hours >= 15 && hours < 18) {
-                return "Good Afternoon";
-            } else if (hours >= 18 && hours < 21) {
-                return "Good Evening";
-            } else {
-                return "Good Night";
-            }
-        }
+      const widget = document.getElementById("widget");
+      const subtext = document.getElementById("subtext");
+      const greetingElement = document.getElementById("greeting");
+      const emojiElement = document.getElementById("emoji");
 
-        document.getElementById("greeting").textContent = getGreeting();
-    </script>
+      let text = "";
+      let emoji = "";
+
+      if (hours >= 6 && hours < 12) {
+        widget.style.backgroundColor = "#FFF5B7"; // Light yellow
+        text = "Good Morning";
+        emoji = "🌅";
+        subtext.textContent = "Wishing you a bright and cheerful start 🌞";
+      } else if (hours >= 12 && hours < 15) {
+        widget.style.backgroundColor = "#B3E5FC"; // Light blue
+        text = "Good Noon";
+        emoji = "☀️";
+        subtext.textContent = "Keep up the energy — it’s midday power time ⚡";
+      } else if (hours >= 15 && hours < 18) {
+        widget.style.backgroundColor = "#FFD6A5"; // Light orange
+        text = "Good Afternoon";
+        emoji = "🌤️";
+        subtext.textContent = "Hope your afternoon is going great 🌻";
+      } else if (hours >= 18 && hours < 21) {
+        widget.style.backgroundColor = "#E68A57"; // Dark orange + grayish tint
+        text = "Good Evening";
+        emoji = "🌇";
+        subtext.textContent = "Unwind and enjoy your evening vibes 🍃";
+      } else {
+        widget.style.backgroundColor = "#2B1B1B"; // Peach black
+        text = "Good Night";
+        emoji = "🌙";
+        subtext.textContent = "Have a peaceful and cozy night 🌌";
+        widget.querySelector("h1").style.color = "#fff";
+        subtext.style.color = "#ddd";
+      }
+
+      // Assign emoji and wave text separately
+      emojiElement.textContent = emoji;
+      greetingElement.innerHTML = animateWaveText(text);
+    }
+
+    getGreeting();
+  </script>
 </body>
 </html>
